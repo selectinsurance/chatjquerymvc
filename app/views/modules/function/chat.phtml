@@ -1,0 +1,5 @@
+<?php while($rows = mysqli_fetch_assoc($Mensajes)): ?>
+
+    <p><?= $rows['telefono'] ?> <b><?= $rows['user'] ?></b> <?= $rows['mensaje'] ?></p>
+
+<?php endwhile; ?>
