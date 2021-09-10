@@ -5,11 +5,15 @@ class controller
     public static function inicio()
     {
         require_once 'app/views/assets/header.phtml';
+
+        //consumiendo api para mostrar mensajes
         $api = new ChatApi();
         $Mensajes = $api->MostrarMensaje();
         foreach ($Mensajes['messages'] as $mensaje) {
             crud::Create(query::InsertChat($mensaje['chatId'], $mensaje['author'], $mensaje['body']));
         }
+
+        
         require_once 'app/views/modules/inicio.php';
         require_once 'app/views/assets/footer.phtml';
     }
@@ -28,12 +32,6 @@ class controller
             }
         }
         //
-
-
-        // Consumiendo api para insertar en base de datos los mensajes entrantes
-
-        //
-
 
         // insertando en base de datos
         $resultado = crud::Create(query::InsertChat($_POST['telefono'], $_POST['user'], $_POST['mensaje']));

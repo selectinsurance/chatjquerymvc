@@ -1,14 +1,15 @@
 $(document).ready(function () {
-    EnviarMensaje();
 
+    EnviarMensaje();//Enviar mensajes del formulario
+    $.ajaxSetup({ "cache": false });//Manejo de cache
+    setInterval("MostrarMensajes()", 500);//Refresco cada medio segundo
 
-    $.ajaxSetup({"cache":false});//Manejo de cache
-    setInterval("MostrarMensajes()", 500)//Refresco cada medio segundo
 });
 
 
+
 //Enviar mensajes
-var EnviarMensaje = function() {
+var EnviarMensaje = function () {
     $('#btnEnviar').click(function (e) {
         e.preventDefault();
 
