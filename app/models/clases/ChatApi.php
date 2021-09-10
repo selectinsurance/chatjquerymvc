@@ -40,4 +40,12 @@ class ChatApi
         if ($resultado) return json_decode($resultado);
         return false;
     }
+
+    public function MostrarMensaje(){
+        $Url = $this->Url.'messages?chatId=573166857000@c.us&token='.$this->Token;
+        $resultado = file_get_contents($Url);
+        $Datos = json_decode($resultado, true);
+        return $Datos;
+
+    }
 }
